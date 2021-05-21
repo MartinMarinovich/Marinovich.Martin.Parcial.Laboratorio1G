@@ -29,6 +29,7 @@ int main()
     int proximoIdCliente = 1;
     int auxModificacion;
     int auxBaja;
+    int auxIdCliente;
     int opcionMenu;
 
     if(!inicializarClientes(listaDeClientes,TAM_CLIENTES) && !inicializarAlquilers(listaDeAlquileres,TAM_ALQUILERES))
@@ -93,11 +94,12 @@ int main()
         case 3:
             if(verificarExistenciaCliente(listaDeClientes,TAM_CLIENTES)==0)
             {
-                auxBaja = bajaCliente(listaDeClientes,listaDeEmpleados,TAM_CLIENTES,TAM_EMPLEADOS);
+                auxBaja = bajaCliente(listaDeClientes,listaDeEmpleados,TAM_CLIENTES,TAM_EMPLEADOS,&auxIdCliente);
 
                 if(!auxBaja)
                 {
                     printf("Baja exitosa\n");
+                    bajaAlquiler(listaDeAlquileres,TAM_ALQUILERES,auxIdCliente);
                 }
                 else
                 {
@@ -113,18 +115,19 @@ int main()
             }
             break;
         case 4:
-            system("cls");
+           // system("cls");
             if(!verificarExistenciaCliente(listaDeClientes,TAM_CLIENTES))
             {
                 ordenarClientes(listaDeClientes,TAM_CLIENTES),
 
                // listarClientes(listaDeClientes,TAM_CLIENTES);
-             // listarClientes(listaDeClientes,listaDeEmpleados,TAM_CLIENTES,TAM_EMPLEADOS);
+             //listarClientes(listaDeClientes,listaDeEmpleados,TAM_CLIENTES,TAM_EMPLEADOS);
 
                //listarPorCategoria(listaDeAlquileres,listaDeCategorias,listaDeJuegos,listaDeClientes,TAM_CLIENTES,TAM_JUEGOS,TAM_ALQUILERES,TAM_CATEGORIAS);
              // mostrarJuegoFavorito(listaDeAlquileres,listaDeJuegos,TAM_JUEGOS,TAM_ALQUILERES);
 
-            mostrarAcumuladoPorCliente(listaDeAlquileres,listaDeJuegos,listaDeClientes,TAM_CLIENTES,TAM_ALQUILERES,TAM_JUEGOS);
+             //mostrarAcumuladoPorCliente(listaDeAlquileres,listaDeJuegos,listaDeClientes,TAM_CLIENTES,TAM_ALQUILERES,TAM_JUEGOS,listaDeEmpleados,TAM_EMPLEADOS);
+             mostrarAlquileresPorCliente(listaDeAlquileres,listaDeJuegos,listaDeClientes,listaDeCategorias,listaDeEmpleados,TAM_EMPLEADOS,TAM_CATEGORIAS,TAM_CLIENTES,TAM_ALQUILERES,TAM_JUEGOS);
             }
             else
             {

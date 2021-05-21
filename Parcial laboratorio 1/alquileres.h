@@ -66,12 +66,31 @@ int altaAlquiler(eAlquileres listaDeAlquileres[],eCliente listaDeClientes[],eEmp
  *return 0 si salio bien 1 si salio mal
  */
 int listarAlquilers(eAlquileres listaDeAlquileres[],int tamAlquilers,eJuego listaJuegos[],eCliente listaClientes[],eCategoria listaDeCategorias[],int tamcategorias,int tamJuego, int tamCliente);
+
+int bajaAlquiler(eAlquileres listarAlquilers[],int tamAlquileres,int idCliente);
+
 int verificarExistenciaAlquiler(eAlquileres listarAlquileres[], int tamAlquileres);
 void mostrarUnAlquiler(eAlquileres unAlquiler,eJuego listaJuegos[],eCliente listaClientes[],eCategoria listaDeCategorias[],int tamcategorias,int tamJuego, int tamCliente);
 int obtenerDescripcionJuego(eJuego listaDeJuegos[],int tamJuegos, int idJuego, char descripcionJuego[],float *precio);
 int obtenerDescripcionCliente(eCliente listaDeClientes[], int tamanioClientes, int id, char nombreCliente[], char apellidoCliente[]);
 int obtenerDescripcionCategoria(eCategoria listaDeCategorias[],eJuego listaDeJuegos[],int tamJuegos,int tamcategorias,int idJuego, char descripcionCategoria[]);
-int buscarJuego(eJuego listaDeJuegos[], int tamJuegos,int idJuego);
+
 int listarPorCategoria(eAlquileres listaDeAlquileres[],eCategoria listaDeCategorias[],eJuego listaDeJuegos[],eCliente listaDeClientes[],int tamClientes, int tamJuegos,int tamAlquileres, int tamCategoria);
 int hardcodearAlquileres(eAlquileres listaDeAlquileres[],int tamanioAlquileres, int *pIdAlquiler);
 int mostrarJuegoFavorito(eAlquileres listaDeAlquileres[],eJuego listaDeJuegos[], int tamJuegos,int tamAlquileres);
+int mostrarAcumuladoPorCliente(eAlquileres listaDeAlquileres[],eJuego listaDeJuegos [],eCliente listaDeClientes[],int tamClientes,int tamAlquileres,int tamJuegos,eEmpleado listaDeEmpleados[],int tamEmpleados);
+
+/*Brief La funcion mostrarAlquileresPorCliente recibe la lista de alquileres, lista de juegos, lista de clientes, lista de categorias y sus tamanios para hacer la busqueda por ID del cliente
+ * para luego mostrar cada alquiler que posee ese cliente
+ *
+ * param  listaDeClientes vector estructura de clientes
+ * param  listaDeAlquileres vector estructura de empleados
+ * param  tamEmpleados  vector estructura de empleados
+ * param  tamanioClientes vector estructura de clientes
+ * param  pIdAlquiler puntero a la variable id autoincremental
+ * param listaDeJuegos vector estructura de juegos
+ * param tamJuego tamanio de lvector juegos
+
+ * return 0 si esta ok o 1 si salio mal
+ */
+int mostrarAlquileresPorCliente(eAlquileres listaDeAlquileres[],eJuego listaDeJuegos [],eCliente listaDeClientes[],eCategoria listaDeCategorias[],eEmpleado listaDeEmpleados[], int tamEmpleados,int tamCategorias,int tamClientes,int tamAlquileres,int tamJuegos);

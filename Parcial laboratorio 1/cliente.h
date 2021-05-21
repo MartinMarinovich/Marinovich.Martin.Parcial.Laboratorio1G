@@ -127,8 +127,19 @@ int buscarCliente(eCliente listaDeClientes[], int tamClientes,int idCliente);
  */
 
 //int bajaCliente(eCliente listaDeClientes[], int tamClientes);
-int bajaCliente(eCliente listaDeClientes[], eEmpleado listaDeEmpleados [],int tamClientes, int tamEmpleados);
+
+int bajaCliente(eCliente listaDeClientes[], eEmpleado listaDeEmpleados [],int tamClientes, int tamEmpleados,int *pIdCliente);
 
 int obtenerDescripcionEmpleado(eEmpleado listaDeEmpleados[],int tamCliente,int idEmpleado, char descripcionEmpleado[]);
 
 int hardcodearClientes(eCliente listaDeClientes[],int tamanioClientes, int *pIdCliente);
+
+/*Brief la funcion getIdCliente recibe la lista de clientes y su tamanio para buscar el id que deseamos
+ *
+ * param listaDeClientes,vector lista de clientes
+ * param tamClientes tamnaio del vector
+ *
+ *return devuelve el id
+ */
+
+int getIdCliente(eCliente listaDeClientes[],eEmpleado listaDeEmpleados[],int tamClientes,int tamEmpleados);

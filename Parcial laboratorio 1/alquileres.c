@@ -57,25 +57,6 @@ int inicializarAlquilers(eAlquileres listaDeAlquileres[],int tamanioAlquileres)
     return error;
 }
 
-int buscarJuego(eJuego listaDeJuegos[], int tamJuegos,int idJuego)
-{
-    int indice=-1;
-
-    if(listaDeJuegos!=NULL && tamJuegos>0 && idJuego >0)
-    {
-
-        for(int i=0; i<tamJuegos; i++)
-        {
-            if(idJuego == listaDeJuegos[i].codigo)
-            {
-                indice = i;
-                break;
-            }
-        }
-    }
-
-    return indice;
-}
 
 
 int buscarLibreAlquiler(eAlquileres listaDeAlquileres[], int tamanioAlquileres)
@@ -155,6 +136,26 @@ int altaAlquiler(eAlquileres listaDeAlquileres[],eCliente listaDeClientes[],eEmp
     }
     return retorno;
 
+
+}
+int bajaAlquiler(eAlquileres listaDeAlquileres[],int tamAlquileres,int idCliente)
+{
+    int retorno =  0;
+
+    if(listaDeAlquileres != NULL && tamAlquileres >0 && idCliente >0)
+    {
+        for(int i = 0; i<tamAlquileres;i++)
+        {
+            if(listaDeAlquileres[i].codigoCliente == idCliente)
+            {
+                listaDeAlquileres[i].isEmpty = 1;
+                retorno = 1;
+            }
+        }
+    }
+
+
+    return retorno;
 
 }
 
@@ -256,7 +257,7 @@ int listarAlquilers(eAlquileres listaDeAlquileres[],int tamAlquilers,eJuego list
 
         for(int i=0; i<tamAlquilers; i++)
         {
-            if(!verificarExistenciaAlquiler(listaDeAlquileres,tamAlquilers) && listaDeAlquileres[i].isEmpty == 0 && listaClientes[i].isEmpty == 0)
+            if(!verificarExistenciaAlquiler(listaDeAlquileres,tamAlquilers) && listaDeAlquileres[i].isEmpty == 0)
             {
 
                 mostrarUnAlquiler(listaDeAlquileres[i],listaJuegos,listaClientes,listaDeCategorias,tamcategorias,tamJuego,tamCliente);
@@ -354,7 +355,6 @@ int mostrarJuegoFavorito(eAlquileres listaDeAlquileres[],eJuego listaDeJuegos[],
         printf(" *** JUEGO FAVORITO ***\n");
 
 
-
         for(int i = 0; i<tamAlquileres; i++)
         {
             for(int j = 0; j<tamJuegos; j++)
@@ -364,7 +364,7 @@ int mostrarJuegoFavorito(eAlquileres listaDeAlquileres[],eJuego listaDeJuegos[],
 
                     contadores[j]++;
                     error = 0;
-               }
+                }
 
             }
         }
@@ -395,31 +395,94 @@ int mostrarJuegoFavorito(eAlquileres listaDeAlquileres[],eJuego listaDeJuegos[],
     return error;
 }
 
-int mostrarAcumuladoPorCliente(eAlquileres listaDeAlquileres[],eJuego listaDeJuegos [],eCliente listaDeClientes[],int tamClientes,int tamAlquileres,int tamJuegos)
+int mostrarAcumuladoPorCliente(eAlquileres listaDeAlquileres[],eJuego listaDeJuegos [],eCliente listaDeClientes[],int tamClientes,int tamAlquileres,int tamJuegos,eEmpleado listaDeEmpleados[],int tamEmpleados)
 {
     int error = -1;
     int indice;
-    float acumulador[tamClientes];
+    int idCliente;
+    float acumulador = 0;
+    int flag = 0;
 
-    if(listaDeAlquileres != NULL && tamAlquileres > 0 && tamJuegos>0)
+    if(listaDeAlquileres != NULL && listaDeJuegos != NULL && listaDeClientes != NULL && tamClientes > 0 && tamAlquileres > 0 && tamJuegos>0)
     {
-        printf("*** DINERO A PAGAR POR CLIENTE ***\n");
-        for(int i = 0; i<tamAlquileres;i++)
+        printf("*** DINERO A PAGAR POR CLIENTE ***\n\n");
+
+        idCliente = getIdCliente(listaDeClientes,listaDeEmpleados,tamClientes,tamEmpleados);
+        for(int i = 0; i<tamClientes; i++)
         {
 
-            for(int j = 0; j<tamClientes;j++)
+            if(listaDeAlquileres[i].codigoCliente == idCliente && listaDeAlquileres[i].isEmpty == 0)
             {
-                if(listaDeAlquileres[i].codigoCliente == listaDeClientes[j].codigo)
+                flag = 1;
+                for(int j = 0; j<tamJuegos; j++)
                 {
-                    indice = buscarJuego(listaDeJuegos,tamJuegos,listaDeAlquileres[i].codigoJuego);
-
-                    acumulador[i] = listaDeJuegos[indice].importe;
+                    if(listaDeAlquileres[i].codigoJuego == listaDeJuegos[j].codigo)
+                    {
+                        acumulador += listaDeJuegos[j].importe;
+                    }
                 }
             }
-            printf("%.2f\n",acumulador[i]);
         }
+
+        if(!flag)
+        {
+            printf("\n No se obtuvo dinero de ese cliente\n");
+        }
+        else
+        {
+            indice = buscarCliente(listaDeClientes,tamClientes,idCliente);
+            printf(" Codigo           Nombre             Apellido             Sexo           Telefono       IdEmpleado      Empleado\n");
+            printf("---------------------------------------------------------------------------------------------------------------------\n");
+            mostrarUnCliente(listaDeClientes[indice],listaDeEmpleados,tamEmpleados);
+            printf("\nTotal acumulado %.2f\n",acumulador);
+        }
+
+
+
     }
 
     return error;
+}
+
+
+int mostrarAlquileresPorCliente(eAlquileres listaDeAlquileres[],eJuego listaDeJuegos [],eCliente listaDeClientes[],eCategoria listaDeCategorias[],eEmpleado listaDeEmpleados[], int tamEmpleados,int tamCategorias,int tamClientes,int tamAlquileres,int tamJuegos)
+{
+
+    int error = -1;
+    int flag = 0;
+    int idCliente;
+
+
+    if(listaDeAlquileres !=NULL && listaDeJuegos != NULL && listaDeClientes != NULL && tamClientes >0 && tamAlquileres>0 && tamJuegos >0)
+    {
+
+
+
+        idCliente = getIdCliente(listaDeClientes,listaDeEmpleados,tamClientes,tamEmpleados);
+        printf("*** ALQUILERES  POR CLIENTE ***\n\n");
+        printf(" Codigo Alquiler           Juego          Categoria      Codigo Cliente     Nombre Cliente      Apellido Cliente          Fecha de Alquiler          Precio\n");
+        printf("-------------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
+
+        for(int i = 0; i<tamClientes; i++)
+        {
+
+            if(listaDeAlquileres[i].codigoCliente == idCliente && listaDeAlquileres[i].isEmpty == 0)
+            {
+                flag = 1;
+                mostrarUnAlquiler(listaDeAlquileres[i],listaDeJuegos,listaDeClientes,listaDeCategorias,tamCategorias,tamJuegos,tamClientes);
+            }
+        }
+
+        if(!flag)
+        {
+            printf("No se encontaron alquileres con ese cliente\n");
+        }
+
+    }
+    return error;
+
+
+
+
 }
 

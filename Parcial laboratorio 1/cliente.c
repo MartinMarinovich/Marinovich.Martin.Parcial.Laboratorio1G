@@ -371,7 +371,7 @@ int modificarClientes(eCliente listaDeClientes[], eEmpleado listaDeEmpleados [],
 }
 
 
-int bajaCliente(eCliente listaDeClientes[], eEmpleado listaDeEmpleados [],int tamClientes, int tamEmpleados)
+int bajaCliente(eCliente listaDeClientes[], eEmpleado listaDeEmpleados [],int tamClientes, int tamEmpleados,int *pIdCliente)
 {
     int retorno= -1;
     int indice;
@@ -381,9 +381,10 @@ int bajaCliente(eCliente listaDeClientes[], eEmpleado listaDeEmpleados [],int ta
     printf("*** Baja Cliente ***\n\n");
     if(listaDeClientes!=NULL && tamClientes >0)
     {
-        listarClientes(listaDeClientes,listaDeEmpleados,tamEmpleados,tamClientes);
+        listarClientes(listaDeClientes,listaDeEmpleados,tamClientes,tamEmpleados);
         utn_getNumero(&idCliente,"\ningrese la ID","Error, numero invalido",1,20,4);
         indice = buscarCliente(listaDeClientes, tamClientes,idCliente);
+        *pIdCliente = idCliente;
 
         if(indice==-1)
         {
@@ -400,6 +401,7 @@ int bajaCliente(eCliente listaDeClientes[], eEmpleado listaDeEmpleados [],int ta
                 if(opcion == 1)
                 {
                     listaDeClientes[indice].isEmpty=1;
+
                     retorno = 0;
                 }
                 else
@@ -451,4 +453,21 @@ int ordenarClientes(eCliente listaDeClientes [], int tamClientes)
     }
 
     return retorno;
+}
+
+int getIdCliente(eCliente listaDeClientes[],eEmpleado listaDeEmpleados[],int tamClientes,int tamEmpleados)
+{
+    int idCliente;
+
+    listarClientes(listaDeClientes,listaDeEmpleados,tamClientes,tamEmpleados);
+
+    utn_getNumero(&idCliente,"Ingrese la id del cliente\n","Error,id incorrecta",1,15,5);
+    while(buscarCliente(listaDeClientes,tamClientes,idCliente)==-1)
+    {
+         utn_getNumero(&idCliente,"Ingrese la id del cliente\n","Error,id incorrecta",1,15,5);
+    }
+
+    printf("\n");
+
+    return idCliente;
 }

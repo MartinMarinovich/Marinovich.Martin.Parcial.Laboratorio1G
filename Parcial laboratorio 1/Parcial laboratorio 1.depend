@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1621577100 source:c:\users\martin\desktop\parcial de laboratorio 1g\marinovich.martin.parciallaboratorio1g\parcial laboratorio 1\alquileres.c
+1621629159 source:c:\users\martin\desktop\parcial de laboratorio 1g\marinovich.martin.parciallaboratorio1g\parcial laboratorio 1\alquileres.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -19,13 +19,13 @@
 
 1621491274 c:\users\martin\desktop\parcial de laboratorio 1g\marinovich.martin.parciallaboratorio1g\parcial laboratorio 1\categoria.h
 
-1621219446 source:c:\users\martin\desktop\parcial de laboratorio 1g\marinovich.martin.parciallaboratorio1g\parcial laboratorio 1\juego.c
+1621628600 source:c:\users\martin\desktop\parcial de laboratorio 1g\marinovich.martin.parciallaboratorio1g\parcial laboratorio 1\juego.c
 	"juego.h"
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 
-1621038214 c:\users\martin\desktop\parcial de laboratorio 1g\marinovich.martin.parciallaboratorio1g\parcial laboratorio 1\juego.h
+1621628617 c:\users\martin\desktop\parcial de laboratorio 1g\marinovich.martin.parciallaboratorio1g\parcial laboratorio 1\juego.h
 
 1621033841 source:c:\users\martin\desktop\parcial de laboratorio 1g\marinovich.martin.parciallaboratorio1g\parcial laboratorio 1\utn.c
 	<stdio.h>
@@ -35,7 +35,7 @@
 
 1621033048 c:\users\martin\desktop\parcial de laboratorio 1g\marinovich.martin.parciallaboratorio1g\parcial laboratorio 1\utn.h
 
-1621563441 source:c:\users\martin\desktop\parcial de laboratorio 1g\marinovich.martin.parciallaboratorio1g\parcial laboratorio 1\cliente.c
+1621628733 source:c:\users\martin\desktop\parcial de laboratorio 1g\marinovich.martin.parciallaboratorio1g\parcial laboratorio 1\cliente.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -43,10 +43,10 @@
 	"utn.h"
 	"cliente.h"
 
-1621562071 c:\users\martin\desktop\parcial de laboratorio 1g\marinovich.martin.parciallaboratorio1g\parcial laboratorio 1\cliente.h
+1621628643 c:\users\martin\desktop\parcial de laboratorio 1g\marinovich.martin.parciallaboratorio1g\parcial laboratorio 1\cliente.h
 	"empleado.h"
 
-1621572995 source:c:\users\martin\desktop\parcial de laboratorio 1g\marinovich.martin.parciallaboratorio1g\parcial laboratorio 1\main.c
+1621629346 source:c:\users\martin\desktop\parcial de laboratorio 1g\marinovich.martin.parciallaboratorio1g\parcial laboratorio 1\main.c
 	<stdio.h>
 	<stdlib.h>
 	"alquileres.h"
@@ -56,7 +56,7 @@
 	"categoria.h"
 	"empleado.h"
 
-1621572172 c:\users\martin\desktop\parcial de laboratorio 1g\marinovich.martin.parciallaboratorio1g\parcial laboratorio 1\alquileres.h
+1621628795 c:\users\martin\desktop\parcial de laboratorio 1g\marinovich.martin.parciallaboratorio1g\parcial laboratorio 1\alquileres.h
 	"categoria.h"
 	"fecha.h"
 	"cliente.h"

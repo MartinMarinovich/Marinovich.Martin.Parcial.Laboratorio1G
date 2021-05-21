@@ -17,3 +17,4 @@ typedef struct{
 int hardCodearJuegos(eJuego listaDeJuegos[], int tamJuegos);
 int listarJuegos(eJuego listaDeJuegos[], int tamanioJuegos);
 void mostrarJuego(eJuego unJuego);
+int buscarJuego(eJuego listaDeJuegos[], int tamJuegos,int idJuego);
