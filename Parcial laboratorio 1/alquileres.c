@@ -14,9 +14,9 @@ int hardcodearAlquileres(eAlquileres listaDeAlquileres[],int tamanioAlquileres, 
     int retorno = -1;
 
     int codigoJuego[10] = {1007,1001,1002,1003,1004,1002,1007,1007,1006,1006};
-    int dias [10] = {4,5,8,8,30,20,11,22,22,4};
-    int meses [10] = {12,12,1,3,4,4,5,6,6,4};
-    int anios [10] = {1996,1996,2020,2020,2004,2001,2001,2004,2019,2020};
+    int dias [10] = {4,4,8,8,30,30,11,22,22,4};
+    int meses [10] = {12,12,1,1,4,4,5,6,6,4};
+    int anios [10] = {1996,1996,2020,2020,2004,2004,2001,2004,2019,2020};
     int idCliente[10] = {4,4,1,1,2,5,3,7,10,10};
     if(listaDeAlquileres != NULL && tamanioAlquileres >0 && pIdAlquiler !=NULL)
     {
@@ -144,7 +144,7 @@ int bajaAlquiler(eAlquileres listaDeAlquileres[],int tamAlquileres,int idCliente
 
     if(listaDeAlquileres != NULL && tamAlquileres >0 && idCliente >0)
     {
-        for(int i = 0; i<tamAlquileres;i++)
+        for(int i = 0; i<tamAlquileres; i++)
         {
             if(listaDeAlquileres[i].codigoCliente == idCliente)
             {
@@ -480,9 +480,54 @@ int mostrarAlquileresPorCliente(eAlquileres listaDeAlquileres[],eJuego listaDeJu
 
     }
     return error;
-
-
-
-
 }
 
+
+int mostrarAlquileresPorFecha(eAlquileres listaDeAlquileres[],eJuego listaJuegos[],eCliente listaClientes[],eCategoria listaDeCategorias[],int tamAlquileres,int tamcategorias,int tamJuego, int tamCliente)
+{
+    int retorno=-1;
+    eFecha fecha;
+    int flag=0;
+
+    if(listaJuegos != NULL && listaClientes != NULL && listaDeCategorias != NULL && tamcategorias >0  && tamJuego >0 && tamCliente>0)
+    {
+        system("cls");
+        printf(" *** ALQUILERES POR FECHA ***\n\n");
+
+        if(utn_getNumero(&fecha.dia,"Ingrese el dia del alquiler\n","Error, ingrese un dai valido\n",1,31,4) &&
+                utn_getNumero(&fecha.mes,"Ingrese el mes del alquiler\n","Error, ingrese un mes valido\n",1,12,4) &&
+                utn_getNumero(&fecha.anio,"Ingrese el anio del alquiler\n","Error, ingrese un anio valido\n",1900,2021,4))
+        {
+
+            printf("\nAlquileres en la fecha: %02d/%02d/%4d\n\n",fecha.dia,fecha.mes,fecha.anio);
+            printf(" Codigo Alquiler           Juego          Categoria      Codigo Cliente     Nombre Cliente      Apellido Cliente          Fecha de Alquiler          Precio\n");
+            printf("-------------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
+            for(int i=0; i<tamAlquileres; i++)
+            {
+                if(listaDeAlquileres[i].fechaAlquiler.dia==fecha.dia &&
+                        listaDeAlquileres[i].fechaAlquiler.mes==fecha.mes &&
+                        listaDeAlquileres[i].fechaAlquiler.anio==fecha.anio&&listaDeAlquileres[i].isEmpty==0)
+
+                {
+                    mostrarUnAlquiler(listaDeAlquileres[i],listaJuegos,listaClientes,listaDeCategorias,tamcategorias,tamJuego,tamCliente);
+                    flag=1;
+                }
+            }
+
+            if(!flag)
+            {
+                printf("No hay trabajos cargados ese dia\n");
+            }
+        }
+        else
+        {
+            printf("Error, al ingresar la fecha\n");
+        }
+
+
+
+        retorno=0;
+    }
+
+    return retorno;
+}

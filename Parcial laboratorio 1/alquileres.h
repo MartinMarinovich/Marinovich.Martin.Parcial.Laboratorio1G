@@ -67,10 +67,48 @@ int altaAlquiler(eAlquileres listaDeAlquileres[],eCliente listaDeClientes[],eEmp
  */
 int listarAlquilers(eAlquileres listaDeAlquileres[],int tamAlquilers,eJuego listaJuegos[],eCliente listaClientes[],eCategoria listaDeCategorias[],int tamcategorias,int tamJuego, int tamCliente);
 
-int bajaAlquiler(eAlquileres listarAlquilers[],int tamAlquileres,int idCliente);
+/*Brief la funcion bajaAlquiler recibe la lista de alquileres el tamanio del alquiler y relaaciona el id del cliente dado de baja para dar de baja el alquiler
+ *
+ * param tamAlquileres tamanio vec
+ * param listaDeAlquileres vector de estructura de alquileres
+ * param idCliente id del cliente dado de baja
+ *return 0 si salio bien 1 si salio mal
+ */
+int bajaAlquiler(eAlquileres listaDeAlquileres[],int tamAlquileres,int idCliente);
 
+/*Brief la funcion verificarExistenciaALquiler recibe la lista y el tamanio su tarea es determinar si esta cargado almenos 1 vez
+ *
+ * param tamAlquileres tamanio vec
+ * param listaDeAlquileres vector de estructura de alquileres
+
+ *return 0 si salio bien 1 si salio mal
+ */
 int verificarExistenciaAlquiler(eAlquileres listarAlquileres[], int tamAlquileres);
+
+/*Brief la funcion mostrarAlquiler recibe el alquiler de esa posicion y listaws de juegos, clientes, categorias y sus tamaños para mostrarlo 1 vez
+ *
+ * param tamAlquileres tamanio vec
+ * param unAlquiler estructura alquiler
+ * param listaJuegos vector de estructura de juegos
+ * param listaClientes vector de estructura de clientes
+ * param listaDeCategorias vector de estructura de categorias
+ * param tamcategorias tamanio
+ * param tamJuego tamanio
+ * param tamCliente tamanio
+
+ *return 0 si salio bien 1 si salio mal
+ */
 void mostrarUnAlquiler(eAlquileres unAlquiler,eJuego listaJuegos[],eCliente listaClientes[],eCategoria listaDeCategorias[],int tamcategorias,int tamJuego, int tamCliente);
+
+/*Brief la funcion obtenerDescripcionJuego reibe la lsita de juegos, su tamaño, el id del juego buscado, vector para caergar la descripcion y el precio
+ *
+ * param*precio
+ * param descripcionJuego
+ * param idJuego tamanio vec
+ * param tamJuegos estructura alquiler
+ * param listaJuegos vector de estructura de juegos
+ * return 0 si salio bien 1 si salio mal
+ */
 int obtenerDescripcionJuego(eJuego listaDeJuegos[],int tamJuegos, int idJuego, char descripcionJuego[],float *precio);
 int obtenerDescripcionCliente(eCliente listaDeClientes[], int tamanioClientes, int id, char nombreCliente[], char apellidoCliente[]);
 int obtenerDescripcionCategoria(eCategoria listaDeCategorias[],eJuego listaDeJuegos[],int tamJuegos,int tamcategorias,int idJuego, char descripcionCategoria[]);
@@ -94,3 +132,4 @@ int mostrarAcumuladoPorCliente(eAlquileres listaDeAlquileres[],eJuego listaDeJue
  * return 0 si esta ok o 1 si salio mal
  */
 int mostrarAlquileresPorCliente(eAlquileres listaDeAlquileres[],eJuego listaDeJuegos [],eCliente listaDeClientes[],eCategoria listaDeCategorias[],eEmpleado listaDeEmpleados[], int tamEmpleados,int tamCategorias,int tamClientes,int tamAlquileres,int tamJuegos);
+int mostrarAlquileresPorFecha(eAlquileres listaDeAlquileres[],eJuego listaJuegos[],eCliente listaClientes[],eCategoria listaDeCategorias[],int tamAlquileres,int tamcategorias,int tamJuego, int tamCliente);

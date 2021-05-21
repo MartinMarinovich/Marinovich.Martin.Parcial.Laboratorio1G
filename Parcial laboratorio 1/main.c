@@ -127,7 +127,8 @@ int main()
              // mostrarJuegoFavorito(listaDeAlquileres,listaDeJuegos,TAM_JUEGOS,TAM_ALQUILERES);
 
              //mostrarAcumuladoPorCliente(listaDeAlquileres,listaDeJuegos,listaDeClientes,TAM_CLIENTES,TAM_ALQUILERES,TAM_JUEGOS,listaDeEmpleados,TAM_EMPLEADOS);
-             mostrarAlquileresPorCliente(listaDeAlquileres,listaDeJuegos,listaDeClientes,listaDeCategorias,listaDeEmpleados,TAM_EMPLEADOS,TAM_CATEGORIAS,TAM_CLIENTES,TAM_ALQUILERES,TAM_JUEGOS);
+            // mostrarAlquileresPorCliente(listaDeAlquileres,listaDeJuegos,listaDeClientes,listaDeCategorias,listaDeEmpleados,TAM_EMPLEADOS,TAM_CATEGORIAS,TAM_CLIENTES,TAM_ALQUILERES,TAM_JUEGOS);
+            mostrarAlquileresPorFecha(listaDeAlquileres,listaDeJuegos,listaDeClientes,listaDeCategorias,TAM_ALQUILERES,TAM_CATEGORIAS,TAM_JUEGOS,TAM_CLIENTES);
             }
             else
             {

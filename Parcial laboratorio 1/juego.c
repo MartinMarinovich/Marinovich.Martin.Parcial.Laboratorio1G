@@ -60,3 +60,24 @@ int listarJuegos(eJuego listaDeJuegos[], int tamanioJuegos)
 	}
 	return error;
 }
+
+int buscarJuego(eJuego listaDeJuegos[], int tamJuegos,int idJuego)
+{
+    int indice=-1;
+
+    if(listaDeJuegos!=NULL && tamJuegos>0 && idJuego >0)
+    {
+
+        for(int i=0; i<tamJuegos; i++)
+        {
+            if(idJuego == listaDeJuegos[i].codigo)
+            {
+                indice = i;
+                break;
+            }
+        }
+    }
+
+    return indice;
+}
+
